@@ -15,14 +15,22 @@
 </div>
 <div class="row">
   <div class="col-12">
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary dropdown-toggle">
+    <div class="dropdown">
+      <button
+        class="btn btn-primary dropdown-toggle"
+        href="#"
+        type="button"
+        role="button"
+        aria-expanded="false"
+        aria-haspopup="true"
+        (click)="toggleDropdown()"
+      >
         Manage Recipe <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu">
-        <li><a href="#">To Shopping List</a></li>
-        <li><a href="#">Edit Recipe</a></li>
-        <li><a href="#">Delete Recipe</a></li>
+      <ul class="dropdown-menu" [ngClass]="{ show: isDropdownOpen }">
+        <li><a class="dropdown-item" href="#">To Shopping List</a></li>
+        <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
+        <li><a class="dropdown-item" href="#">Delete Recipe</a></li>
       </ul>
     </div>
   </div>
