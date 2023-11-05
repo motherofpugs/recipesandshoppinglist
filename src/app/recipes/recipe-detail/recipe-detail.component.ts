@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { ShoppingListService } from 'src/app/shared/shopping-list.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -11,5 +12,13 @@ export class RecipeDetailComponent {
   isDropdownOpen = false;
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  constructor(private shoppingListService: ShoppingListService) {}
+
+  addToShoppingList() {
+    if (this.recipe) {
+      this.shoppingListService.addItemFromRecipe(this.recipe);
+    }
   }
 }
