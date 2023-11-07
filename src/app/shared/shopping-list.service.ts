@@ -17,7 +17,6 @@ export class ShoppingListService {
   addItem(itemName: string, amount: number) {
     const newIngredient = new Ingredient(itemName, amount);
     this.newItem.emit(newIngredient);
-    console.log(newIngredient);
   }
 
   addItemFromRecipe(recipe: Recipe) {

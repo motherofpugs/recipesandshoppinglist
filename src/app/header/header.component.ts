@@ -12,16 +12,10 @@ import {
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() selectedFeature = new EventEmitter<string>();
-
   isDropdownOpen = false;
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
-  onSelect(feature: string) {
-    this.selectedFeature.emit(feature);
   }
 
   ngOnInit() {}
