@@ -16,5 +16,11 @@ export class ShoppingListComponent implements OnInit {
     this.shoppingListService.newItem.subscribe({
       next: (item: Ingredient) => this.ingredients.push(item),
     });
+    this.shoppingListService.ingredientsChanged.subscribe({
+      next: (ingredients) => (this.ingredients = ingredients),
+    });
+  }
+  selectItem(itemI: number) {
+    this.shoppingListService.selectedItem.next(itemI);
   }
 }
