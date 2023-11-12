@@ -42,9 +42,13 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-12">
-          <img [src]="imagePath.value" class="img-responsive" />
+          <img
+            [src]="imagePath.value"
+            class="img-responsive"
+            style="max-height: 300px"
+          />
         </div>
       </div>
       <div class="row">
@@ -67,7 +71,8 @@
             class="row mb-3"
             *ngFor="
               let ingredientControl of recipeForm?.get('ingredients')?.value;
-              let i = index
+              let i = index;
+              trackBy: trackByFn
             "
             formGroupName="{{ i }}"
           >

@@ -10,6 +10,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { RecipeService } from 'src/app/shared/recipe.service';
 import { Recipe } from '../recipe.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -24,7 +25,8 @@ export class RecipeEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -94,9 +96,13 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../', { relativeTo: this.route }]);
+    this.location.back();
   }
   ondeleteIngredient(index: number) {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+  }
+
+  trackByFn(index: number, control: AbstractControl): number {
+    return index;
   }
 }
