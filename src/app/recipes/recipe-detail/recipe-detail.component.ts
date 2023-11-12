@@ -11,7 +11,7 @@ import { RecipeService } from 'src/app/shared/recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
   recipe?: Recipe;
-  id?: number;
+  id!: number;
   isDropdownOpen = false;
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -37,5 +37,9 @@ export class RecipeDetailComponent implements OnInit {
   }
   editRecipe() {
     this.router.navigate(['edit'], { relativeTo: this.route });
+  }
+  deleteRecipe() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 }

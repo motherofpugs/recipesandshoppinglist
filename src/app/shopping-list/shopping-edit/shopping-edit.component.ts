@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { valHooks } from 'jquery';
 import { Subscription } from 'rxjs';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from 'src/app/shared/shopping-list.service';
@@ -46,23 +47,37 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     );
   }
 
-  addItem() {
+  addorUpdateItem() {
     if (this.editMode) {
       this.shoppingListService.updateIngreditent(this.editedItemI, {
         name: this.itemForm.get('itemName')?.value,
         amount: this.itemForm.get('itemAmount')?.value,
       });
-      console.log(this.selectedItem);
     } else {
       this.shoppingListService.addItem(
         this.itemForm.get('itemName')?.value,
         this.itemForm.get('itemAmount')?.value
       );
     }
+    this.editMode = false;
+    this.itemForm.reset();
   }
   fillSelectedItem() {
     this.itemForm.setValue(this.shoppingListService.selectItem);
   }
+
+  onClear() {
+    this.itemForm.reset();
+    this.editMode = false;
+  }
+
+  deleteItem() {
+    if (this.editMode) {
+      this.shoppingListService.deleteItem(this.editedItemI);
+      this.onClear();
+    }
+  }
+
   ngOnDestroy(): void {
     this.itemSub.unsubscribe();
   }
