@@ -36,9 +36,9 @@ export class ShoppingListService {
   }
 
   addItemFromRecipe(recipe: Recipe) {
-    recipe.ingredients.forEach((ingredient) =>
-      this.ingredients.push(ingredient)
-    );
+    recipe.ingredients.forEach((ingredient) => {
+      this.addItem(ingredient);
+    });
   }
 
   selectItem(itemI: string) {
@@ -50,7 +50,7 @@ export class ShoppingListService {
   }
 
   deleteItem(id: string) {
-    this.dataService.deleteRecipe(id).subscribe({
+    this.dataService.deleteIgredient(id).subscribe({
       complete: () => {
         this.getItems();
       },
