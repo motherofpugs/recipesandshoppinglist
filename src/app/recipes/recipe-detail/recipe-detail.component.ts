@@ -3,6 +3,7 @@ import { Recipe } from '../recipe.model';
 import { ShoppingListService } from 'src/app/shared/shopping-list.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from 'src/app/shared/recipe.service';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,8 +11,8 @@ import { RecipeService } from 'src/app/shared/recipe.service';
   styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
-  recipe?: Recipe;
-  id!: number;
+  recipe!: Recipe;
+  id!: string;
   isDropdownOpen = false;
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -21,12 +22,22 @@ export class RecipeDetailComponent implements OnInit {
     private recipeService: RecipeService,
     private shoppingListService: ShoppingListService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dataService: DataStorageService
   ) {}
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
-      if (this.id) this.recipe = this.recipeService.getRecipe(this.id);
+      if (this.id) {
+        this.dataService.getRecipe(this.id).subscribe({
+          next: (recipe: Recipe) => {
+            this.recipe = recipe;
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+      }
     });
   }
 
@@ -40,6 +51,5 @@ export class RecipeDetailComponent implements OnInit {
   }
   deleteRecipe() {
     this.recipeService.deleteRecipe(this.id);
-    this.router.navigate(['/recipes']);
   }
 }

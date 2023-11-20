@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "slist-rbook": {
+      "hosting": {
+        "recipesandshoppinglist": [
+          "slist-rbook"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "slist-rbook"
+  }
+}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,10 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './shared/recipe.service';
 import { ShoppingListService } from './shared/shopping-list.service';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -36,8 +41,12 @@ import { ShoppingListService } from './shared/shopping-list.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
-  providers: [RecipeService, ShoppingListService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
