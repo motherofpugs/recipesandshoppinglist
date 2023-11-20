@@ -12,15 +12,16 @@ export class ShoppingListComponent implements OnInit {
   constructor(private shoppingListService: ShoppingListService) {}
 
   ngOnInit(): void {
-    this.ingredients = this.shoppingListService.ingredients;
     this.shoppingListService.newItem.subscribe({
       next: (item: Ingredient) => this.ingredients.push(item),
     });
     this.shoppingListService.ingredientsChanged.subscribe({
-      next: (ingredients) => (this.ingredients = ingredients),
+      next: (ingredients) => {
+        this.ingredients = ingredients;
+      },
     });
   }
-  selectItem(itemI: number) {
-    this.shoppingListService.selectedItem.next(itemI);
+  selectItem(id?: string) {
+    this.shoppingListService.selectedItem.next(id);
   }
 }

@@ -16,6 +16,7 @@ import {
   getDocs,
   setDoc,
 } from '@angular/fire/firestore';
+import { Ingredient } from './ingredient.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,10 @@ export class DataStorageService {
   constructor(private firestore: Firestore) {}
 
   private readonly recipesCollectionRef = collection(this.firestore, 'recipes');
+  private readonly ingredientsCollectionRef = collection(
+    this.firestore,
+    'ingredients'
+  );
 
   createRecipe(recipe: Recipe): Observable<DocumentData> {
     return from(addDoc(this.recipesCollectionRef, recipe));
@@ -70,5 +75,59 @@ export class DataStorageService {
   updateRecipe(recipe: Recipe): Observable<void> {
     const recipeDoc = doc(this.firestore, `recipes/${recipe.id}`);
     return from(setDoc(recipeDoc, recipe));
+  }
+
+  // getRecipes(): Observable<Recipe[]> {
+  //   return from(getDocs(this.recipesCollectionRef)).pipe(
+  //     map((snapshot) => {
+  //       const resultList = snapshot.docs.map((doc) => {
+  //         const recipeData: Recipe = doc.data() as Recipe;
+  //         recipeData.id = doc.id;
+  //         return recipeData;
+  //       });
+  //       return resultList;
+  //     })
+  //   );
+  // }
+  // createRecipe(recipe: Recipe): Observable<DocumentData> {
+  //   return from(addDoc(this.recipesCollectionRef, recipe));
+  // }
+
+  // deleteRecipe(id: string): Observable<void> {
+  //   const recipeDoc = doc(this.firestore, `recipes/${id}`);
+  //   return from(deleteDoc(recipeDoc));
+  // }
+
+  getIngredients(): Observable<Ingredient[]> {
+    return from(getDocs(this.ingredientsCollectionRef)).pipe(
+      map((snapshot) => {
+        const resultList = snapshot.docs.map((doc) => {
+          const ingData: Ingredient = doc.data() as Ingredient;
+          ingData.id = doc.id;
+          return ingData;
+        });
+        return resultList;
+      })
+    );
+  }
+
+  addIgredient(item: Ingredient): Observable<DocumentData> {
+    return from(addDoc(this.ingredientsCollectionRef, item));
+  }
+
+  deleteIgredient(id: string): Observable<void> {
+    const itemDoc = doc(this.firestore, `ingredients/${id}`);
+    return from(deleteDoc(itemDoc));
+  }
+
+  getIngredient(id: string) {
+    const ingredientDoc = doc(this.firestore, `ingredients/${id}`);
+    return from(getDoc(ingredientDoc)).pipe(
+      map((doc) => {
+        const ingredientData: Ingredient = doc.data() as Ingredient;
+        ingredientData.id = doc.id;
+        return ingredientData;
+      })
+    );
   }
 }

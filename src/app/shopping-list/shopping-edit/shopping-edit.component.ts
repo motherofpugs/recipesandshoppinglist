@@ -22,7 +22,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   itemForm!: FormGroup;
   itemSub!: Subscription;
   editMode: boolean = false;
-  editedItemI!: number;
+  editedItemI!: string;
   selectedItem!: Ingredient;
   constructor(private shoppingListService: ShoppingListService) {}
 
@@ -34,30 +34,36 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         Validators.pattern(/^[1-9]\d*$/),
       ]),
     });
-    this.itemSub = this.shoppingListService.selectedItem.subscribe(
-      (index: number) => {
-        this.editedItemI = index;
-        this.editMode = true;
-        this.selectedItem = this.shoppingListService.selectItem(index);
-        this.itemForm.setValue({
-          itemName: this.selectedItem.name,
-          itemAmount: this.selectedItem.amount,
-        });
-      }
-    );
+    this.shoppingListService.selectedItem.subscribe({
+      next: (index?: string) => {
+        if (index) {
+          this.editedItemI = index;
+          this.editMode = true;
+          const selectedItem = this.shoppingListService.ingredients.find(
+            (item) => item.id === index
+          );
+          if (selectedItem) {
+            this.itemForm.setValue({
+              itemName: selectedItem.name,
+              itemAmount: selectedItem.amount,
+            });
+            this.selectedItem = selectedItem;
+          } else {
+            console.error(`Item with ID ${index} not found.`);
+          }
+        }
+      },
+    });
   }
 
   addorUpdateItem() {
     if (this.editMode) {
-      this.shoppingListService.updateIngreditent(this.editedItemI, {
+      this.shoppingListService.updateIngreditent();
+    } else {
+      this.shoppingListService.addItem({
         name: this.itemForm.get('itemName')?.value,
         amount: this.itemForm.get('itemAmount')?.value,
       });
-    } else {
-      this.shoppingListService.addItem(
-        this.itemForm.get('itemName')?.value,
-        this.itemForm.get('itemAmount')?.value
-      );
     }
     this.editMode = false;
     this.itemForm.reset();
@@ -78,7 +84,5 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    this.itemSub.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 }
