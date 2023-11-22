@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { DataStorageService } from '../shared/data-storage.service';
 import { Recipe } from '../recipes/recipe.model';
+import { AuthService } from '../shared/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,16 @@ import { Recipe } from '../recipes/recipe.model';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private dataStorageService: DataStorageService) {}
+  public loggedInStatus$?: Observable<boolean | null>;
+  public userEmail$?: Observable<string | null>;
+
+  constructor(
+    private dataStorageService: DataStorageService,
+    private authService: AuthService
+  ) {
+    this.loggedInStatus$ = this.authService.loggenInStatus$;
+    this.userEmail$ = this.authService.userEmail$;
+  }
   isDropdownOpen = false;
   ngOnInit() {}
   toggleDropdown() {
@@ -32,5 +43,10 @@ export class HeaderComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  async logout(): Promise<void> {
+    await this.authService.logout();
+    console.log('Logged out');
   }
 }

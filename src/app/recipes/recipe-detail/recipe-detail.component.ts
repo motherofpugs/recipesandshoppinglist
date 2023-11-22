@@ -11,7 +11,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
   styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
-  recipe!: Recipe;
+  recipe?: Recipe;
   id!: string;
   isDropdownOpen = false;
   toggleDropdown() {
