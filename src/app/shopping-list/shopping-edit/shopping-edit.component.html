@@ -13,7 +13,7 @@
             id="name"
             class="form-control"
             #nameInput
-            formControlName="itemName"
+            formControlName="name"
           />
         </div>
         <div class="col-sm-2 mb-3">
@@ -23,7 +23,7 @@
             id="amount"
             class="form-control"
             #amountInput
-            formControlName="itemAmount"
+            formControlName="amount"
           />
         </div>
         <div class="row">
@@ -36,14 +36,15 @@
               {{ editMode ? "Update" : "Add" }}
             </button>
             <button
+              *ngIf="selectedItem"
               class="btn btn-danger me-1 shadow"
               type="button"
-              (click)="deleteItem()"
-              *ngIf="editMode"
+              (click)="deleteItem(selectedItem.id)"
             >
               Delete
             </button>
             <button
+              *ngIf="editMode"
               class="btn btn-primary me-1 shadow"
               type="button"
               (click)="onClear()"

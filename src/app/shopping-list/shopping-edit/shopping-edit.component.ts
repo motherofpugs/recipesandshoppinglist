@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { valHooks } from 'jquery';
 import { Subscription } from 'rxjs';
 import { Ingredient } from 'src/app/shared/ingredient.model';
@@ -20,68 +21,53 @@ import { ShoppingListService } from 'src/app/shared/shopping-list.service';
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   itemForm!: FormGroup;
-  itemSub!: Subscription;
-  editMode: boolean = false;
-  editedItemI!: string;
   selectedItem!: Ingredient;
-  constructor(private shoppingListService: ShoppingListService) {}
+  editMode: boolean = false;
+
+  constructor(
+    private shoppingListService: ShoppingListService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.itemForm = new FormGroup({
-      itemName: new FormControl('', Validators.required),
-      itemAmount: new FormControl('', [
+      name: new FormControl('', Validators.required),
+      amount: new FormControl('', [
         Validators.required,
         Validators.pattern(/^[1-9]\d*$/),
       ]),
     });
     this.shoppingListService.selectedItem.subscribe({
-      next: (index?: string) => {
-        if (index) {
-          this.editedItemI = index;
+      next: (item: Ingredient) => {
+        if (item && this.itemForm) {
           this.editMode = true;
-          const selectedItem = this.shoppingListService.ingredients.find(
-            (item) => item.id === index
-          );
-          if (selectedItem) {
-            this.itemForm.setValue({
-              itemName: selectedItem.name,
-              itemAmount: selectedItem.amount,
-            });
-            this.selectedItem = selectedItem;
-          } else {
-            console.error(`Item with ID ${index} not found.`);
-          }
+          console.log(item);
+          this.selectedItem = item;
+          this.itemForm.patchValue(item);
         }
       },
     });
   }
 
   addorUpdateItem() {
-    if (this.editMode) {
-      this.shoppingListService.updateIngreditent();
+    const newItem = this.itemForm.value;
+    if (this.selectedItem && this.editMode) {
+      newItem.id = this.selectedItem.id;
+      this.shoppingListService.updateIngreditent(newItem);
+      this.onClear();
     } else {
-      this.shoppingListService.addItem({
-        name: this.itemForm.get('itemName')?.value,
-        amount: this.itemForm.get('itemAmount')?.value,
-      });
+      this.shoppingListService.addItem(newItem);
     }
-    this.editMode = false;
-    this.itemForm.reset();
-  }
-  fillSelectedItem() {
-    this.itemForm.setValue(this.shoppingListService.selectItem);
   }
 
   onClear() {
-    this.itemForm.reset();
     this.editMode = false;
+    this.itemForm.reset();
   }
 
-  deleteItem() {
-    if (this.editMode) {
-      this.shoppingListService.deleteItem(this.editedItemI);
-      this.onClear();
-    }
+  deleteItem(id?: string) {
+    if (id) this.shoppingListService.deleteItem(id);
+    this.onClear();
   }
 
   ngOnDestroy(): void {}

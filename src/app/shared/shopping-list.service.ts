@@ -1,36 +1,35 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Injectable, OnInit } from '@angular/core';
 import { Ingredient } from './ingredient.model';
 import { Recipe } from '../recipes/recipe.model';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { DataStorageService } from './data-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShoppingListService {
-  ingredients: Ingredient[] = [];
+  private ingredientsSubject: BehaviorSubject<Ingredient[]> =
+    new BehaviorSubject<Ingredient[]>([]);
+  ingredients$ = this.ingredientsSubject.asObservable();
 
-  newItem = new Subject<Ingredient>();
-  selectedItem = new Subject<string | undefined>();
-  ingredientsChanged = new Subject<Ingredient[]>();
+  selectedItem: Subject<Ingredient> = new Subject<Ingredient>();
 
   constructor(private dataService: DataStorageService) {
     this.getItems();
+  }
+
+  getItems() {
+    this.dataService.getIngredients().subscribe({
+      next: (items: Ingredient[]) => {
+        this.ingredientsSubject.next(items);
+      },
+    });
   }
 
   addItem(item: Ingredient) {
     this.dataService.addIgredient(item).subscribe({
       complete: () => {
         this.getItems();
-      },
-    });
-  }
-
-  getItems() {
-    this.dataService.getIngredients().subscribe({
-      next: (items: Ingredient[]) => {
-        this.ingredients = items;
-        this.ingredientsChanged.next(this.ingredients);
       },
     });
   }
@@ -44,7 +43,7 @@ export class ShoppingListService {
   selectItem(itemI: string) {
     this.dataService.getIngredient(itemI).subscribe({
       next: (item: Ingredient) => {
-        this.selectedItem.next(item.id);
+        this.selectedItem.next(item);
       },
     });
   }
@@ -57,7 +56,11 @@ export class ShoppingListService {
     });
   }
 
-  updateIngreditent() {
-    this.ingredientsChanged.next(this.ingredients);
+  updateIngreditent(item: Ingredient) {
+    this.dataService.updateIngredient(item).subscribe({
+      complete: () => {
+        this.getItems();
+      },
+    });
   }
 }

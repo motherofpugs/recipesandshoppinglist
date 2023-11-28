@@ -130,4 +130,9 @@ export class DataStorageService {
       })
     );
   }
+
+  updateIngredient(item: Ingredient): Observable<void> {
+    const itemDoc = doc(this.firestore, `ingredients/${item.id}`);
+    return from(setDoc(itemDoc, item));
+  }
 }
