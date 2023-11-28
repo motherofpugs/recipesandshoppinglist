@@ -6,11 +6,13 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { AuthComponent } from './auth/auth.component';
+import { EatsplorerMainComponent } from './eatsplorer/eatsplorer-main/eatsplorer-main.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
 
   { path: 'auth', component: AuthComponent },
+  { path: 'eatsplorer', component: EatsplorerMainComponent },
   {
     path: 'recipes',
     component: RecipesComponent,

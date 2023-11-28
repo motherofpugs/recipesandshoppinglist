@@ -24,6 +24,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AuthComponent } from './auth/auth.component';
 import { FooterComponent } from './footer/footer.component';
+import { EatsplorerListComponent } from './eatsplorer/eatsplorer-list/eatsplorer-list.component';
+import { EatsplorerMainComponent } from './eatsplorer/eatsplorer-main/eatsplorer-main.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { FooterComponent } from './footer/footer.component';
     RecipeEditComponent,
     AuthComponent,
     FooterComponent,
+    EatsplorerListComponent,
+    EatsplorerMainComponent,
   ],
   imports: [
     BrowserModule,
