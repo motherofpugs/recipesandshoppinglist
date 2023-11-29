@@ -15,7 +15,28 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit(): void {
     this.shoppingListService.ingredients$.subscribe({
       next: (items: Ingredient[]) => {
-        this.ingredients = items;
+        const summedData: {
+          [key: string]: {
+            amount: number;
+            id?: string;
+          };
+        } = {};
+        items.forEach((item) => {
+          if (summedData[item.name]) {
+            summedData[item.name].amount += item.amount;
+          } else {
+            summedData[item.name] = {
+              amount: item.amount,
+              id: item.id,
+            };
+          }
+        });
+
+        this.ingredients = Object.keys(summedData).map((name) => ({
+          id: summedData[name].id,
+          name,
+          amount: summedData[name].amount,
+        }));
       },
     });
   }
