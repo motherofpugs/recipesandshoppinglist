@@ -1,7 +1,9 @@
+import { RecipeService } from 'src/app/shared/recipe.service';
 import { Ingredient } from './../../shared/ingredient.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ShoppingListService } from 'src/app/shared/shopping-list.service';
+import { Recipe } from 'src/app/recipes/recipe.model';
 
 @Component({
   selector: 'app-eatsplorer-main',
@@ -12,8 +14,12 @@ export class EatsplorerMainComponent implements OnInit {
   ingredients!: Ingredient[];
   itemGridForm = new FormGroup({});
   selectedIngredients: string[] = [];
+  filteredRecipes!: Recipe[];
 
-  constructor(private shoppingService: ShoppingListService) {}
+  constructor(
+    private shoppingService: ShoppingListService,
+    private recipeService: RecipeService
+  ) {}
   ngOnInit(): void {
     this.shoppingService.ingredients$.subscribe({
       next: (items: Ingredient[]) => {
@@ -53,7 +59,7 @@ export class EatsplorerMainComponent implements OnInit {
     );
   }
 
-  findRecipe() {
+  selectRecipe() {
     const formValues = this.itemGridForm.value as { [key: string]: boolean };
 
     const selectedItems = Object.keys(formValues)
@@ -61,5 +67,17 @@ export class EatsplorerMainComponent implements OnInit {
       .map((key) => ({ name: key }));
 
     console.log(selectedItems);
+  }
+
+  findRecipes() {
+    this.filteredRecipes = this.recipeService.recipes.filter((recipe: Recipe) =>
+      this.selectedIngredients.every((selectedIngredient) =>
+        recipe.ingredients.some(
+          (recipeIngredient) => recipeIngredient.name === selectedIngredient
+        )
+      )
+    );
+
+    console.log(this.filteredRecipes);
   }
 }

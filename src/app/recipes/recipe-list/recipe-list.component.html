@@ -1,5 +1,8 @@
 <div class="row">
   <div class="col-12 mx-0 mb-4 px-0">
+    <div *ngIg="!recipe" class="text-center mb-3">
+      <h1>Please select a recipe!</h1>
+    </div>
     <button class="btn btn-success shadow" (click)="newRecipe()">
       New Recipe
     </button>
