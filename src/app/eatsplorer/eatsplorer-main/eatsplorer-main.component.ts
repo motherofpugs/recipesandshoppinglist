@@ -21,34 +21,31 @@ export class EatsplorerMainComponent implements OnInit {
     private recipeService: RecipeService
   ) {}
   ngOnInit(): void {
-    this.shoppingService.ingredients$.subscribe({
-      next: (items: Ingredient[]) => {
-        const summedData: {
-          [key: string]: {
-            amount: number;
-            id?: string;
-          };
-        } = {};
-        items.forEach((item) => {
-          if (summedData[item.name]) {
-            summedData[item.name].amount += item.amount;
-          } else {
-            summedData[item.name] = {
-              amount: item.amount,
-              id: item.id,
-            };
-          }
+    this.recipeService.recipesChanged$.subscribe({
+      next: (recipes: Recipe[]) => {
+        const uniqueIngredients: { [key: string]: Ingredient } = {};
+        recipes.forEach((recipe) => {
+          recipe.ingredients.forEach((ingredient) => {
+            if (uniqueIngredients[ingredient.name]) {
+              uniqueIngredients[ingredient.name].amount += ingredient.amount;
+            } else {
+              uniqueIngredients[ingredient.name] = {
+                id: ingredient.id,
+                name: ingredient.name,
+                amount: ingredient.amount,
+              };
+            }
+          });
         });
-        this.ingredients = Object.keys(summedData).map((name) => ({
-          id: summedData[name].id,
-          name,
-          amount: summedData[name].amount,
-        }));
+
+        this.ingredients = Object.values(uniqueIngredients);
+
         this.ingredients.forEach((ingredient) => {
           this.itemGridForm.addControl(ingredient.name, new FormControl(false));
         });
       },
     });
+
     this.itemGridForm.valueChanges.subscribe(
       (value: { [key: string]: boolean }) => {
         console.log(value);
@@ -57,9 +54,9 @@ export class EatsplorerMainComponent implements OnInit {
         );
       }
     );
+    this.recipeService.getRecipes();
   }
-
-  selectRecipe() {
+  selectItem() {
     const formValues = this.itemGridForm.value as { [key: string]: boolean };
 
     const selectedItems = Object.keys(formValues)
@@ -68,7 +65,6 @@ export class EatsplorerMainComponent implements OnInit {
 
     console.log(selectedItems);
   }
-
   findRecipes() {
     this.filteredRecipes = this.recipeService.recipes.filter(
       (recipe: Recipe) =>
@@ -76,7 +72,7 @@ export class EatsplorerMainComponent implements OnInit {
           recipe.ingredients.some(
             (recipeIngredient) => recipeIngredient.name === selectedIngredient
           )
-        ) && this.selectedIngredients.length === recipe.ingredients.length
+        ) && this.selectedIngredients.length >= recipe.ingredients.length
     );
 
     this.itemGridForm.reset();

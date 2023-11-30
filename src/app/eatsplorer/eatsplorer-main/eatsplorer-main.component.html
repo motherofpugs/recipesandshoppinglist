@@ -1,4 +1,4 @@
-<div class="container-md">
+<div class="container-md mt-5">
   <h1 class="mb-3">Discover Recipes with What You Have at Home</h1>
   <h3 class="text-muted mb-3">
     Simply select the items from your pantry or fridge, and let our app do the
@@ -11,7 +11,7 @@
   </h3>
   <div class="row">
     <div class="col-6">
-      <form [formGroup]="itemGridForm" (ngSubmit)="selectRecipe()">
+      <form [formGroup]="itemGridForm" (ngSubmit)="selectItem()">
         <ul class="list-group">
           <li
             *ngFor="let ingredient of ingredients; let i = index"
