@@ -7,10 +7,12 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  display: grid;
 }
 
 main {
   position: relative;
+  flex: 1;
 }
 .header-bg {
   background-color: rgb(37, 226, 166);

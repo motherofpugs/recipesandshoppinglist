@@ -79,6 +79,6 @@ export class EatsplorerMainComponent implements OnInit {
         ) && this.selectedIngredients.length === recipe.ingredients.length
     );
 
-    console.log(this.filteredRecipes);
+    this.itemGridForm.reset();
   }
 }
