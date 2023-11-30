@@ -70,12 +70,13 @@ export class EatsplorerMainComponent implements OnInit {
   }
 
   findRecipes() {
-    this.filteredRecipes = this.recipeService.recipes.filter((recipe: Recipe) =>
-      this.selectedIngredients.every((selectedIngredient) =>
-        recipe.ingredients.some(
-          (recipeIngredient) => recipeIngredient.name === selectedIngredient
-        )
-      )
+    this.filteredRecipes = this.recipeService.recipes.filter(
+      (recipe: Recipe) =>
+        this.selectedIngredients.every((selectedIngredient) =>
+          recipe.ingredients.some(
+            (recipeIngredient) => recipeIngredient.name === selectedIngredient
+          )
+        ) && this.selectedIngredients.length === recipe.ingredients.length
     );
 
     console.log(this.filteredRecipes);
