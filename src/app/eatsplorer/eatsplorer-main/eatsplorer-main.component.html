@@ -1,1 +1,39 @@
-<p>eatsplorer-main works!</p>
+<div class="container-md">
+  <div class="row">
+    <div class="col-6">
+      <form [formGroup]="itemGridForm" (ngSubmit)="findRecipe()">
+        <ul class="list-group">
+          <li
+            *ngFor="let ingredient of ingredients; let i = index"
+            class="list-group-item"
+          >
+            <input
+              class="form-check-input me-1"
+              type="checkbox"
+              formControlName="{{ ingredient.name }}"
+              id="{{ ingredient.name }}"
+            />
+            <label
+              class="form-check-label stretched-link"
+              for="{{ ingredient.name }}"
+              >{{ ingredient.name }}</label
+            >
+          </li>
+        </ul>
+      </form>
+    </div>
+    <div class="col-6">
+      <h4>You have:</h4>
+      <ul>
+        <li *ngFor="let selectedItem of selectedIngredients">
+          {{ selectedItem }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary">Find Recipes</button>
+    </div>
+  </div>
+</div>
