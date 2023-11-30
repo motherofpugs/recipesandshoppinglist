@@ -9,8 +9,8 @@
     Embrace the joy of cooking with what you have on hand.
     <strong class="text-succes">Start your flavorful journey today!</strong>
   </h3>
-  <div class="row">
-    <div class="col-6">
+  <div class="row justify-content-between">
+    <div class="col-6" style="height: 50vh; overflow: scroll">
       <form [formGroup]="itemGridForm" (ngSubmit)="selectItem()">
         <ul class="list-group">
           <li
@@ -32,7 +32,7 @@
         </ul>
       </form>
     </div>
-    <div class="col-6">
+    <div class="col-5">
       <h4>You have:</h4>
       <ul>
         <li *ngFor="let selectedItem of selectedIngredients">

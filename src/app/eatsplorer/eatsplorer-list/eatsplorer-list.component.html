@@ -1,22 +1,24 @@
-<div>
-  <div class="row" *ngIf="filteredRecipes && filteredRecipes.length > 0">
+<div class="mt-4">
+  <div class="row g-4" *ngIf="filteredRecipes && filteredRecipes.length > 0">
     <div class="col-md-4 col-lg-4" *ngFor="let recipe of filteredRecipes">
-      <div class="card">
+      <div class="card h-100">
         <img
           [src]="recipe.imagePath"
           class="card-img-top"
           [alt]="recipe.name"
         />
-        <div class="card-body">
+        <div class="card-body d-flex flex-column justify-content-between">
           <h5 class="card-title">{{ recipe.name }}</h5>
           <p class="card-text">{{ recipe.desc }}</p>
-          <a
-            href="#"
-            class="btn btn-primary"
-            [routerLink]="['/recipes', recipe.id]"
-          >
-            Go to recipe
-          </a>
+          <div class="">
+            <button
+              href="#"
+              class="btn btn-primary"
+              [routerLink]="['/recipes', recipe.id]"
+            >
+              Go to recipe
+            </button>
+          </div>
         </div>
       </div>
     </div>
