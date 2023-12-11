@@ -9,7 +9,7 @@ import { AuthComponent } from './auth/auth.component';
 import { EatsplorerMainComponent } from './eatsplorer/eatsplorer-main/eatsplorer-main.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  { path: '', component: RecipeStartComponent, pathMatch: 'full' },
 
   { path: 'auth', component: AuthComponent },
   { path: 'eatsplorer', component: EatsplorerMainComponent },

@@ -14,9 +14,6 @@ main {
   position: relative;
   flex: 1;
 }
-.header-bg {
-  background-color: rgb(37, 226, 166);
-}
 
 .card-margin-bottom {
   margin-bottom: 10rem;
