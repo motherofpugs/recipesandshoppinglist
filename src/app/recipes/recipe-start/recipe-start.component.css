@@ -23,24 +23,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 35vh;
+  height: 17vh;
 }
 
 .hero-full-icon {
   text-align: center;
   position: relative;
 }
-.hero-features svg {
-  width: 10rem;
+.hero-features svg:first-child {
+  width: 9rem;
   height: auto;
   fill: var(--primary-green);
   display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.hero-icon {
-  max-height: 70%;
+.svg-centered {
   position: absolute;
-  top: 15%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  fill: var(--light-green);
+  width: 5rem;
+  height: auto;
 }
