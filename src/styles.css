@@ -1,4 +1,13 @@
-@import "~bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --black: #25313c;
+  --primary-green: #a2de96;
+  --primary-coral: #ffa699;
+  --hover-coral: #ff9888;
+  --fw-extrabold: 800;
+}
 
 html,
 body {
@@ -6,8 +15,9 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Mulish", sans-serif;
   display: grid;
+  color: var(--black);
 }
 
 main {
@@ -17,4 +27,65 @@ main {
 
 .card-margin-bottom {
   margin-bottom: 10rem;
+}
+.fw-extrabold {
+  font-weight: var(--fw-extrabold);
+}
+
+.text-coral {
+  color: var(--primary-coral);
+}
+
+.text-green {
+  color: var(--primary-green);
+}
+
+.p-custom {
+  font-size: 1.2rem;
+  line-height: 150%;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+}
+
+.btn-coral {
+  border-radius: 12px;
+  padding: 0.8rem;
+  border: none;
+  color: #fff;
+  background-color: var(--primary-coral);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+}
+.btn-coral:hover {
+  background-color: var(--hover-coral);
+}
+
+.btn-green {
+  border-radius: 12px;
+  padding: 0.8rem;
+  border: none;
+  color: #fff;
+  background-color: var(--primary-green);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+}
+.btn-green:hover {
+  background-color: var(--primary-green);
+}
+
+.custom-input {
+  padding: 0.8rem;
+  width: 20rem;
+  border-radius: 12px;
+  border: 1px solid #81818150;
+  margin-right: 1.6rem;
+}
+.custom-input::placeholder {
+  color: #81818150;
+  font-weight: 600;
+}
+.custom-input:focus {
+  outline: 1px solid #8181817e;
 }

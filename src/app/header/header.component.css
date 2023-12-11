@@ -1,7 +1,20 @@
+@import "../../styles.css";
+
 .header-bg {
-  background-color: #a2de96;
+  background-color: var(--primary-green);
 }
 
 .btn-lightwhite {
-  background-color: #ffffff91;
+  background-color: #ffffff65;
+  width: 6rem;
+  border-radius: 12px;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-lightwhite:hover {
+  background-color: #ffffff8d;
+}
+
+li {
+  margin-right: 1rem;
 }

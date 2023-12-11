@@ -1,0 +1,19 @@
+@import "../../../styles.css";
+
+.fs-hero {
+  font-size: 3.2rem;
+  line-height: 135%;
+  margin-bottom: 2.4rem;
+}
+
+.m-hero {
+  margin-top: 8rem;
+}
+
+.bg-img {
+  background: url(../../../assets/pexels-ella-olsson-1640773.png);
+  background-size: cover;
+  position: absolute;
+  height: auto;
+  background-position: center;
+}
