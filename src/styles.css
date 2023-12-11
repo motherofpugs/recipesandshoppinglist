@@ -36,10 +36,12 @@ main {
 
 .text-coral {
   color: var(--primary-coral);
+  font-weight: 800;
 }
 
 .text-green {
   color: var(--primary-green);
+  font-weight: 800;
 }
 
 .p-custom {
@@ -93,5 +95,9 @@ main {
 }
 
 .m-bottom {
-  margin-bottom: 12rem;
+  margin-bottom: 10rem;
+}
+
+.m-top {
+  margin-top: 8rem;
 }

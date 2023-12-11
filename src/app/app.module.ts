@@ -26,6 +26,7 @@ import { AuthComponent } from './auth/auth.component';
 import { FooterComponent } from './footer/footer.component';
 import { EatsplorerListComponent } from './eatsplorer/eatsplorer-list/eatsplorer-list.component';
 import { EatsplorerMainComponent } from './eatsplorer/eatsplorer-main/eatsplorer-main.component';
+import { RecipeStart2Component } from './recipes/recipe-start/recipe-start2/recipe-start2.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { EatsplorerMainComponent } from './eatsplorer/eatsplorer-main/eatsplorer
     FooterComponent,
     EatsplorerListComponent,
     EatsplorerMainComponent,
+    RecipeStart2Component,
   ],
   imports: [
     BrowserModule,
