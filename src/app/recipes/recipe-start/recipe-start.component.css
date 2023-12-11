@@ -7,13 +7,40 @@
 }
 
 .m-hero {
-  margin-top: 8rem;
+  margin-top: 10rem;
 }
 
 .bg-img {
   background: url(../../../assets/pexels-ella-olsson-1640773.png);
   background-size: cover;
-  position: absolute;
+  padding: 0;
   height: auto;
   background-position: center;
+}
+
+.hero-features {
+  background-color: var(--light-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35vh;
+}
+
+.hero-full-icon {
+  text-align: center;
+  position: relative;
+}
+.hero-features svg {
+  width: 10rem;
+  height: auto;
+  fill: var(--primary-green);
+  display: block;
+}
+
+.hero-icon {
+  max-height: 70%;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
 }

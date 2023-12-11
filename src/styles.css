@@ -4,6 +4,8 @@
 :root {
   --black: #25313c;
   --primary-green: #a2de96;
+  --hover-green: #8ad97b;
+  --light-green: #f3fff3;
   --primary-coral: #ffa699;
   --hover-coral: #ff9888;
   --fw-extrabold: 800;
@@ -88,4 +90,8 @@ main {
 }
 .custom-input:focus {
   outline: 1px solid #8181817e;
+}
+
+.m-bottom {
+  margin-bottom: 12rem;
 }
