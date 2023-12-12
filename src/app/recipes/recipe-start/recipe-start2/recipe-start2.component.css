@@ -3,15 +3,22 @@ img {
 }
 h1 {
   margin-bottom: 2.4rem;
-}
-
-h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1.6rem;
+  font-size: 2.4rem;
 }
 
 .step-list {
   font-size: 1.5rem;
 
   font-weight: 600;
+}
+
+.custom-row-gap {
+  margin-left: -2rem; /* Adjust this value as needed */
+  margin-right: -2rem; /* Adjust this value as needed */
+}
+
+.custom-row-gap [class^="col-"],
+.custom-row-gap [class*=" col-"] {
+  padding-left: 2rem; /* Adjust this value to match the negative margin */
+  padding-right: 2rem; /* Adjust this value to match the negative margin */
 }
