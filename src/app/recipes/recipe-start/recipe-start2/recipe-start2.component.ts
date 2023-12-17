@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 import { RecipeService } from 'src/app/shared/recipe.service';
 import { Recipe } from '../../recipe.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-start2',
@@ -11,7 +18,10 @@ export class RecipeStart2Component implements OnInit {
   selectedIndex: number = 0;
   recipes: Recipe[] = [];
 
-  constructor(private recipeService: RecipeService) {}
+  @ViewChild('recipesContainer') recipesContainer!: ElementRef;
+
+  constructor(private recipeService: RecipeService, private router: Router) {}
+
   ngOnInit(): void {
     this.recipeService.recipesChanged$.subscribe((recipes: Recipe[]) => {
       this.recipes = recipes;
@@ -20,10 +30,33 @@ export class RecipeStart2Component implements OnInit {
   }
 
   nextImg() {
-    if (this.selectedIndex >= this.recipes.length - 1) {
-      this.selectedIndex = 0;
-    } else {
+    if (this.selectedIndex < this.recipes.length - 1) {
       this.selectedIndex++;
+      this.scrollToCurrentCard();
+    } else {
+      this.selectedIndex = 0;
     }
+  }
+
+  prevImg() {
+    if (this.selectedIndex > 0) {
+      this.selectedIndex--;
+      this.scrollToCurrentCard();
+    } else {
+      this.selectedIndex = this.recipes.length;
+    }
+  }
+
+  scrollToCurrentCard() {
+    const cardWidth =
+      this.recipesContainer.nativeElement.querySelector(
+        '.recipe-card'
+      ).offsetWidth;
+    this.recipesContainer.nativeElement.scrollLeft =
+      this.selectedIndex * cardWidth;
+  }
+
+  onClickRecipe(id: number) {
+    this.router.navigate([`recipes/${id}`]);
   }
 }

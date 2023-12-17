@@ -28,38 +28,46 @@
     </div>
   </div>
 </div>
-<div class="container-lg p-0 m-bottom m-top">
+<section class="container-lg p-0 m-bottom m-top recipes">
   <h1 class="custom-h1 text-coral">Today's favorites</h1>
   <p class="p-custom">
     Take a look to users’ selections for today’s meal, it helps you to made a
     choice about the your meal.
   </p>
-  <div class="carousel-container">
-    <img
-      *ngFor="let recipe of recipes; index as i"
-      [src]="recipe.imagePath"
-      [alt]="recipe.name"
-      [ngClass]="{ 'image-active': selectedIndex === i }"
-    />
-    <div class="btn-carousel btn-prev">
-      <svg width="60" height="60" fill="var(--black)" viewBox="0 0 256 256">
-        <path
-          d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z"
-        ></path>
-      </svg>
-    </div>
-    <div class="btn-carousel btn-next" (click)="nextImg()">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="60"
-        height="60"
-        fill="var(--black)"
-        viewBox="0 0 256 256"
-      >
-        <path
-          d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"
-        ></path>
-      </svg>
+
+  <button class="btn-prev" (click)="prevImg()">
+    <svg width="60" height="60" fill="var(--black)" viewBox="0 0 256 256">
+      <path
+        d="M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z"
+      ></path>
+    </svg>
+  </button>
+  <button class="btn-next" (click)="nextImg()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="60"
+      height="60"
+      fill="var(--black)"
+      viewBox="0 0 256 256"
+    >
+      <path
+        d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"
+      ></path>
+    </svg>
+  </button>
+
+  <div class="recipes-container" #recipesContainer>
+    <div
+      class="recipe-card"
+      *ngFor="let recipe of recipes; let i = index"
+      (click)="onClickRecipe(i)"
+    >
+      <div class="recipe-img">
+        <img [src]="recipe.imagePath" [alt]="recipe.name" class="img-thumb" />
+        <div class="recipe-text">
+          <p class="fw-bold">{{ recipe.name }}</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
