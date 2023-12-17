@@ -116,7 +116,7 @@ h1 {
   right: 0;
 }
 
-.btn-prev svg,
+/* .btn-prev svg,
 .btn-next svg {
   opacity: 0.2;
 }
@@ -124,4 +124,4 @@ h1 {
 .btn-next:hover svg,
 .btn-prev:hover svg {
   opacity: 1;
-}
+} */
