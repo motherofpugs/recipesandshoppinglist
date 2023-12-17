@@ -1,8 +1,27 @@
 .footer {
-  background-color: #f8f9fa;
-  height: 15vh;
-  padding: 5rem 0;
+  background-color: var(--light-coral);
+  height: auto;
   flex-shrink: 0;
   width: 100%;
   margin: 0;
+  padding: 4rem;
+}
+
+.footer img {
+  width: 12rem;
+}
+.footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.socials svg {
+  width: 2rem;
+  margin-right: 0.6rem;
+  fill: var(--black);
+}
+.footer a {
+  text-decoration: none;
+  color: var(--black);
 }
