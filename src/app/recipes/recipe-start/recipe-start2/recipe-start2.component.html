@@ -4,7 +4,7 @@
       <img
         src="../../../../assets/pexels-rfstudio-3621225.jpg"
         alt=""
-        class="w-100"
+        class="w-100 shadow"
       />
     </div>
     <div class="col-7" style="max-width: 45rem">
@@ -65,7 +65,6 @@
       <div
         class="recipe-img"
         [ngClass]="{ 'recipe-active': selectedIndex === i }"
-        #recipeImg
       >
         <img [src]="recipe.imagePath" [alt]="recipe.name" class="img-thumb" />
         <div class="recipe-text">
