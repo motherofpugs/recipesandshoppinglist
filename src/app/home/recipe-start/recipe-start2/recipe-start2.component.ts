@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { RecipeService } from 'src/app/shared/recipe.service';
-import { Recipe } from '../../recipe.model';
+import { Recipe } from '../../../recipes/recipe.model';
 import { Router } from '@angular/router';
 
 @Component({

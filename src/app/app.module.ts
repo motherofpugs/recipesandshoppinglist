@@ -13,7 +13,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { RecipeStartComponent } from './home/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './shared/recipe.service';
@@ -26,7 +26,8 @@ import { AuthComponent } from './auth/auth.component';
 import { FooterComponent } from './footer/footer.component';
 import { EatsplorerListComponent } from './eatsplorer/eatsplorer-list/eatsplorer-list.component';
 import { EatsplorerMainComponent } from './eatsplorer/eatsplorer-main/eatsplorer-main.component';
-import { RecipeStart2Component } from './recipes/recipe-start/recipe-start2/recipe-start2.component';
+import { RecipeStart2Component } from './home/recipe-start/recipe-start2/recipe-start2.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RecipeStart2Component } from './recipes/recipe-start/recipe-start2/reci
     EatsplorerListComponent,
     EatsplorerMainComponent,
     RecipeStart2Component,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
