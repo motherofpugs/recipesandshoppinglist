@@ -58,11 +58,15 @@
 
   <div class="recipes-container" #recipesContainer>
     <div
-      class="recipe-card"
+      class="recipe-card shadow"
       *ngFor="let recipe of recipes; let i = index"
       (click)="onClickRecipe(i)"
     >
-      <div class="recipe-img">
+      <div
+        class="recipe-img"
+        [ngClass]="{ 'recipe-active': selectedIndex === i }"
+        #recipeImg
+      >
         <img [src]="recipe.imagePath" [alt]="recipe.name" class="img-thumb" />
         <div class="recipe-text">
           <p class="fw-bold">{{ recipe.name }}</p>

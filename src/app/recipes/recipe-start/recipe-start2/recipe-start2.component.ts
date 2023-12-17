@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ElementRef,
-  ViewChild,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { RecipeService } from 'src/app/shared/recipe.service';
 import { Recipe } from '../../recipe.model';
 import { Router } from '@angular/router';
@@ -35,6 +29,7 @@ export class RecipeStart2Component implements OnInit {
       this.scrollToCurrentCard();
     } else {
       this.selectedIndex = 0;
+      this.scrollToCurrentCard();
     }
   }
 
@@ -44,6 +39,7 @@ export class RecipeStart2Component implements OnInit {
       this.scrollToCurrentCard();
     } else {
       this.selectedIndex = this.recipes.length;
+      this.scrollToCurrentCard();
     }
   }
 
