@@ -29,6 +29,7 @@ import { EatsplorerMainComponent } from './eatsplorer/eatsplorer-main/eatsplorer
 import { RecipeStart2Component } from './home/recipe-start/recipe-start2/recipe-start2.component';
 import { HomeComponent } from './home/home.component';
 import { HowToComponent } from './home/how-to/how-to.component';
+import { TestimonialComponent } from './home/testimonial/testimonial.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { HowToComponent } from './home/how-to/how-to.component';
     RecipeStart2Component,
     HomeComponent,
     HowToComponent,
+    TestimonialComponent,
   ],
   imports: [
     BrowserModule,

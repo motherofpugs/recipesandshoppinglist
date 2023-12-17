@@ -76,7 +76,7 @@ main {
   transition: 0.3s ease-in-out;
 }
 .btn-green:hover {
-  background-color: var(--primary-green);
+  background-color: var(--hover-green);
 }
 
 .custom-input {
