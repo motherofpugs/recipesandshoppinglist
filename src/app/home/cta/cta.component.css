@@ -1,0 +1,21 @@
+.cta-main {
+  background: url(../../../assets/Untitled-1.png);
+  background-position: center;
+  background-size: 110%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18rem;
+}
+
+.cta {
+  margin: 0 auto;
+}
+.cta h1 {
+  font-size: 2.8rem;
+}
+
+input {
+  margin-bottom: 0;
+}

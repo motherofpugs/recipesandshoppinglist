@@ -30,6 +30,7 @@ import { RecipeStart2Component } from './home/recipe-start/recipe-start2/recipe-
 import { HomeComponent } from './home/home.component';
 import { HowToComponent } from './home/how-to/how-to.component';
 import { TestimonialComponent } from './home/testimonial/testimonial.component';
+import { CtaComponent } from './home/cta/cta.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { TestimonialComponent } from './home/testimonial/testimonial.component';
     HomeComponent,
     HowToComponent,
     TestimonialComponent,
+    CtaComponent,
   ],
   imports: [
     BrowserModule,

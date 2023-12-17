@@ -79,6 +79,9 @@ main {
 .btn-green:hover {
   background-color: var(--hover-green);
 }
+.btn-big {
+  font-size: 1.2rem;
+}
 
 .custom-input {
   padding: 0.8rem;

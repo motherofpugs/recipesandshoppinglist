@@ -4,6 +4,7 @@
   margin: 0 auto;
   justify-content: space-around;
   gap: 2rem;
+  margin-top: 3.6rem;
 }
 .testimonial-card {
   background-color: var(--light-green);
