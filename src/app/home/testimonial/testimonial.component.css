@@ -1,0 +1,81 @@
+@import "../../../styles.css";
+.testimonial-cards {
+  width: 95%;
+  margin: 0 auto;
+}
+.testimonial-card {
+  background-color: var(--light-green);
+  max-width: 22rem;
+  height: 100%;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.testimonial-author {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.testimonial-img {
+  width: 7rem;
+}
+
+.testimonial-img img {
+  border-radius: 999px;
+  width: 100%;
+}
+
+.testimonial-author-name {
+  padding-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+.testimonial-name {
+  margin-bottom: 0.1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.testimonial-job {
+  margin-bottom: 0.64rem;
+}
+.stars {
+  display: flex;
+  gap: 0.2rem;
+}
+.stars svg {
+  fill: var(--primary-coral);
+  width: 1.2rem;
+  margin-bottom: 0;
+}
+
+.testimonial-quote {
+  font-size: 1.2rem;
+  position: relative;
+}
+.qoute-primary {
+  font-weight: 700;
+  margin-bottom: 2.4rem;
+}
+
+.qoute-secondary::before {
+  position: absolute;
+  content: "''";
+  width: 100%;
+  font-size: 3.6rem;
+  font-family: "Coustard", serif;
+  color: var(--primary-green);
+  top: 1.7rem;
+  left: -1.1rem;
+}
+.qoute-secondary::after {
+  position: absolute;
+  content: ",,";
+  width: 100%;
+  font-size: 3.6rem;
+  font-family: "Coustard", serif;
+  color: var(--primary-green);
+  bottom: -1.7rem;
+  right: -17rem;
+}
