@@ -64,3 +64,49 @@
   font-weight: 800;
   margin-bottom: 0.6rem;
 }
+
+@media (max-width: 1396.98px) {
+  .hero-features-text {
+    width: 12rem;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .hero-features svg:first-child {
+    width: 7rem;
+  }
+
+  .svg-centered {
+    width: 4rem;
+    top: 37%;
+  }
+  .hero-features-text {
+    width: 11rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .hero-features svg:first-child {
+    width: 6rem;
+  }
+
+  .svg-centered {
+    width: 3rem;
+    top: 34%;
+  }
+  .hero-features-text {
+    width: 12rem;
+  }
+  .hero-features {
+    background-color: var(--light-green);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+  }
+  .hero-features-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
