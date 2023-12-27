@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20rem;
+  padding: 17.5rem;
 }
 
 .cta {
@@ -18,5 +18,39 @@
 }
 
 input {
-  margin-bottom: 0;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 1396.98px) {
+  .cta-main {
+    padding: 15.5rem;
+  }
+  input {
+    margin-bottom: 3rem;
+  }
+}
+@media (max-width: 1199.98px) {
+  .cta-main {
+    background: url(../../../assets/Untitled-1.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .cta-main {
+    padding: 10rem;
+  }
+}
+@media (max-width: 767px) {
+  .cta-main {
+    background: none;
+    background-color: var(--light-green);
+    padding: 3.5rem 3rem 3rem 3rem;
+  }
 }

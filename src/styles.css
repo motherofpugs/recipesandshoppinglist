@@ -103,9 +103,20 @@ main {
 .m-bottom {
   margin-bottom: 10rem;
 }
+@media (max-width: 991.98px) {
+  .m-bottom {
+    margin-bottom: 6rem;
+  }
+}
 
 .m-top {
   margin-top: 8rem;
+}
+
+@media (max-width: 991.98px) {
+  .m-top {
+    margin-top: 2rem;
+  }
 }
 
 .custom-h1 {

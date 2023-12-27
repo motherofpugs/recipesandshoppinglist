@@ -125,3 +125,19 @@ h1 {
 .btn-prev:hover svg {
   opacity: 1;
 } */
+
+@media (max-width: 991.98px) {
+  .firstImg {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .recipes-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}

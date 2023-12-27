@@ -87,26 +87,41 @@
 
 @media (max-width: 991.98px) {
   .hero-features svg:first-child {
-    width: 6rem;
+    width: 12rem;
+    margin: 0.8rem 0 0.8rem 0;
   }
 
   .svg-centered {
-    width: 3rem;
-    top: 34%;
+    width: 6rem;
+    top: 50%;
   }
   .hero-features-text {
-    width: 12rem;
+    width: 24rem;
+    font-size: 1rem;
+  }
+  .hero-features-text p:first-child {
+    font-size: 1.1rem;
   }
   .hero-features {
     background-color: var(--light-green);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 15rem;
+    height: auto;
+    padding: 1.4rem;
   }
+
   .hero-features-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    margin-left: -12rem;
+  }
+  .hero-features-card {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }
