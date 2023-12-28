@@ -141,3 +141,27 @@ h1 {
     margin: 0 auto;
   }
 }
+
+@media (max-width: 576px) {
+  .xs-p {
+    margin: 0 1.2rem 0 1.2rem;
+  }
+  .btn-prev,
+  .btn-next {
+    display: none;
+  }
+  .recipes-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    max-width: 100%;
+  }
+  .recipe-card {
+    margin-right: 0.1rem;
+    margin-left: 0.1rem;
+    width: 60%;
+  }
+  .recipe-img {
+    filter: brightness(100%);
+  }
+}

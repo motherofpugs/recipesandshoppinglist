@@ -125,3 +125,41 @@
     width: 100%;
   }
 }
+
+@media (max-width: 576px) {
+  .bg-img {
+    background: none;
+  }
+
+  .unvisible-div {
+    display: none;
+  }
+  .text-holder-div {
+    margin: 0 1.2rem 0 1.2rem;
+  }
+  .text-holder-div input {
+    margin-bottom: 1rem;
+  }
+  .m-hero {
+    margin-top: 3.5rem;
+  }
+
+  .hero-features svg:first-child {
+    width: 8rem;
+  }
+
+  .svg-centered {
+    width: 4rem;
+    top: 50%;
+  }
+  .hero-features-text {
+    width: 14rem;
+    font-size: 1rem;
+  }
+  .hero-features-text p:first-child {
+    font-size: 1.1rem;
+  }
+  .hero-features-container {
+    margin-left: 0;
+  }
+}

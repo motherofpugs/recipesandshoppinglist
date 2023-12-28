@@ -48,3 +48,25 @@
   margin-bottom: 0;
   font-size: 0.9rem;
 }
+
+@media (max-width: 767px) {
+  .footer {
+    font-size: 0.8rem;
+  }
+  .footer img {
+    width: 10rem;
+    margin-bottom: 1.4rem;
+  }
+  .footer-rights p {
+    font-size: 0.7rem;
+  }
+  .socials p {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+  .footer img {
+    width: 6rem;
+    margin-bottom: 1.4rem;
+  }
+}

@@ -16,3 +16,14 @@ img {
     margin-left: -3rem;
   }
 }
+@media (max-width: 576px) {
+  .xs-p {
+    margin: 0 1.2rem 0 1.2rem;
+  }
+  input {
+    margin-bottom: 1.2rem;
+  }
+  img {
+    display: none;
+  }
+}
