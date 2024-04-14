@@ -4,3 +4,6 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.recipe-item:hover {
+  background-color: var(--light-green);
+}
