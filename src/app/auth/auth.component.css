@@ -1,0 +1,8 @@
+.btn-none {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+.btn-none img {
+  max-height: 10rem;
+}

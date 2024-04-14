@@ -33,6 +33,10 @@ main {
   background-color: var(--hover-green);
   border-color: var(--primary-green);
 }
+.form-check-input:checked {
+  background-color: var(--primary-coral);
+  border-color: var(--primary-coral);
+}
 
 .card-margin-bottom {
   margin-bottom: 10rem;
@@ -60,7 +64,7 @@ main {
 
 .btn-coral {
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.8rem;
   border: none;
   color: #fff;
   background-color: var(--primary-coral);
@@ -74,7 +78,7 @@ main {
 
 .btn-green {
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.8rem;
   border: none;
   color: #fff;
   background-color: var(--primary-green);
@@ -84,6 +88,21 @@ main {
 }
 .btn-green:hover {
   background-color: var(--hover-green);
+}
+.btn-green-border {
+  border-radius: 12px;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  border: none;
+  color: var(--black);
+  background-color: var(--light-green);
+  border: solid 0.2rem var(--primary-green);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+}
+.btn-green-border:hover {
+  background-color: var(--hover-green);
+  color: #fff;
 }
 .btn-big {
   font-size: 1.2rem;

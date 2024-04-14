@@ -1,21 +1,24 @@
-<div class="container-md mt-5">
-  <h1 class="mb-3">Discover Recipes with What You Have at Home</h1>
-  <h3 class="text-muted mb-3">
+<div class="container-md mt-5 text-center">
+  <h1 class="mb-3 text-coral fs-1">
+    Discover Recipes with What You Have at Home
+  </h1>
+  <h3 class="text-muted mb-2 fs-3">
     Simply select the items from your pantry or fridge, and let our app do the
     rest. We'll scour our vast recipe database to present you with delicious
     recipes that match the ingredients you already have.
   </h3>
-  <h3 class="text-muted mb-5">
+  <h3 class="text-muted mb-5 fs-3">
     Embrace the joy of cooking with what you have on hand.
-    <strong class="text-succes">Start your flavorful journey today!</strong>
+    <br />
+    <strong class="text-green">Start your flavorful journey today!</strong>
   </h3>
   <div class="row justify-content-between">
     <div class="col-6" style="height: 50vh; overflow: scroll">
       <form [formGroup]="itemGridForm" (ngSubmit)="selectItem()">
-        <ul class="list-group">
+        <ul class="list-group text-start">
           <li
             *ngFor="let ingredient of ingredients; let i = index"
-            class="list-group-item"
+            class="list-group-item fs-5"
           >
             <input
               class="form-check-input me-1"
@@ -24,7 +27,7 @@
               id="{{ ingredient.name }}"
             />
             <label
-              class="form-check-label stretched-link"
+              class="form-check-label stretched-link ms-1"
               for="{{ ingredient.name }}"
               >{{ ingredient.name }}</label
             >
@@ -33,8 +36,8 @@
       </form>
     </div>
     <div class="col-5">
-      <h4>You have:</h4>
-      <ul>
+      <h4 class="fw-bold">You have:</h4>
+      <ul class="list-group list-unstyled fs-4">
         <li *ngFor="let selectedItem of selectedIngredients">
           {{ selectedItem }}
         </li>
@@ -43,7 +46,7 @@
   </div>
   <div class="row">
     <div class="text-center mt-4">
-      <button type="submit" class="btn btn-primary" (click)="findRecipes()">
+      <button type="submit" class="btn-green" (click)="findRecipes()">
         Find Recipes
       </button>
     </div>
