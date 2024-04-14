@@ -1,0 +1,20 @@
+<div class="row justify-content-center mx-5 gap-5 my-3">
+  <div class="col-md-5">
+    <app-recipe-list
+      (recipeSelected)="handleRecipeSelected()"
+    ></app-recipe-list>
+  </div>
+  <div *ngIf="recipeSelected" class="col-md-6">
+    <router-outlet></router-outlet>
+  </div>
+  <div *ngIf="!recipeSelected" class="col-md-6 text-center pt-5 mt-5">
+    <h2 class="text-coral fs-1">Choose one from the recipes</h2>
+    <h4>and see it's details or add a new recipe!</h4>
+    <img
+      class="img-responsive mb-3 mt-4"
+      src="https://source.unsplash.com/900x900/?ingredients"
+      alt="cooking photo"
+      style="max-height: 35rem"
+    />
+  </div>
+</div>

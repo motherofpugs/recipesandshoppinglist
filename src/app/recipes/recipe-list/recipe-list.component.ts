@@ -18,6 +18,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[] = [];
+  @Output() recipeSelected = new EventEmitter<boolean>();
 
   constructor(
     private recipeServie: RecipeService,
@@ -32,6 +33,10 @@ export class RecipeListComponent implements OnInit, OnDestroy {
         this.recipes = recipes;
       },
     });
+  }
+
+  onSelectRecipe() {
+    this.recipeSelected.emit(true);
   }
   newRecipe() {
     this.router.navigate(['new'], { relativeTo: this.route });

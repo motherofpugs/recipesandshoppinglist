@@ -8,6 +8,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { AuthComponent } from './auth/auth.component';
 import { EatsplorerMainComponent } from './eatsplorer/eatsplorer-main/eatsplorer-main.component';
 import { HomeComponent } from './home/home.component';
+import { RecipebookComponent } from './recipes/recipebook/recipebook.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -15,8 +16,8 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'eatsplorer', component: EatsplorerMainComponent },
   {
-    path: 'recipes',
-    component: RecipesComponent,
+    path: 'recipebook',
+    component: RecipebookComponent,
     children: [
       { path: 'new', component: RecipeEditComponent },
       {

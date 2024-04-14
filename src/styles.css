@@ -29,6 +29,10 @@ main {
   position: relative;
   flex: 1;
 }
+.list-group-item.active {
+  background-color: var(--hover-green);
+  border-color: var(--primary-green);
+}
 
 .card-margin-bottom {
   margin-bottom: 10rem;
@@ -56,7 +60,7 @@ main {
 
 .btn-coral {
   border-radius: 12px;
-  padding: 0.8rem;
+  padding: 1rem;
   border: none;
   color: #fff;
   background-color: var(--primary-coral);
@@ -70,7 +74,7 @@ main {
 
 .btn-green {
   border-radius: 12px;
-  padding: 0.8rem;
+  padding: 1rem;
   border: none;
   color: #fff;
   background-color: var(--primary-green);

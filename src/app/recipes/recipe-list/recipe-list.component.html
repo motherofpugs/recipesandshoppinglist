@@ -3,9 +3,7 @@
     <div *ngIg="!recipe" class="text-center mb-3">
       <h1>Please select a recipe!</h1>
     </div>
-    <button class="btn btn-success shadow" (click)="newRecipe()">
-      New Recipe
-    </button>
+    <button class="btn-coral w-100" (click)="newRecipe()">New Recipe</button>
   </div>
   <hr />
 </div>
@@ -15,6 +13,7 @@
     style="height: 68vh; overflow: scroll"
   >
     <app-recipe-item
+      (click)="onSelectRecipe()"
       *ngFor="let recipeEl of recipes"
       [recipe]="recipeEl"
       routerLink="{{ recipeEl.id }}"
